@@ -4,7 +4,6 @@ import { useQuery } from "react-query"
 import { CircularProgress, TextField, Grid } from '@mui/material'
 import PageNumber from "../components/PageNumber"
 import Show from "../components/Show"
-import Navbar from "../components/Navbar"
 import { ShowType } from "../types";
 
 const LIMIT = 21;
@@ -35,7 +34,6 @@ const Movies: NextPage<any> = () => {
 
   return (
     <>
-      <Navbar />
       <Grid container spacing={2}>
         <Grid item sm={12} lg={6}>
           <TextField
