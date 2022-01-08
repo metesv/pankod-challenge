@@ -1,6 +1,8 @@
 import React from "react"
 import type { NextPage } from "next"
 import { useQuery } from "react-query"
+import { Button } from "@material-ui/core"
+import Grid from '@mui/material/Grid';
 import Show from "../components/Show"
 import { ShowType } from "../types";
 
@@ -25,21 +27,21 @@ const Movies: NextPage<any> = () => {
 
   return (
     <>
-      <div>
+      <Grid container spacing={2}>
         {
           data.map((item: ShowType) => (
             <Show title={item.title} images={item.images} programType={item.programType} />
           ))
         }
-      </div>
+      </Grid>
       {
         page > 1 
-          && <button onClick={() => setPage(page - 1)}>Previous</button>
+          && <Button onClick={() => setPage(page - 1)}>Previous</Button>
       }
       <p>{page}</p>
       {
         data.length === 21 
-        && <button onClick={() => setPage(page + 1)}>Next</button>
+        && <Button onClick={() => setPage(page + 1)}>Next</Button>
       }
     </>
   );
