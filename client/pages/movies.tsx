@@ -4,6 +4,7 @@ import { useQuery } from "react-query"
 import { CircularProgress, TextField, Grid } from '@mui/material'
 import PageNumber from "../components/PageNumber"
 import Show from "../components/Show"
+import Navbar from "../components/Navbar"
 import { ShowType } from "../types";
 
 const LIMIT = 21;
@@ -24,15 +25,17 @@ const Movies: NextPage<any> = () => {
   }
 
   if (!isLoading) {
-    movieDatas = [...data];
     if (title.length > 3) {
       movieDatas = data.filter((item: any) => item.title.includes(title));
       console.log(movieDatas);
+    } else {
+      movieDatas = [...data];
     }
   }
 
   return (
     <>
+      <Navbar />
       <Grid container spacing={2}>
         <Grid item sm={12} lg={6}>
           <TextField
