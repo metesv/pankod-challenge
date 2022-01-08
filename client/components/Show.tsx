@@ -7,7 +7,7 @@ import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 import { ShowType } from "../types";
 
-const Show = ({ title, description, programType, images, releaseYear }: ShowType) => {
+const Show = ({ title, images }: ShowType) => {
   return (
     <Grid item xs={6} md={4} lg={2}>
       <Card sx={{ maxWidth: 345 }}>

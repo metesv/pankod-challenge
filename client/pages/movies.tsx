@@ -1,8 +1,8 @@
 import React from "react"
 import type { NextPage } from "next"
 import { useQuery } from "react-query"
-import { Button } from "@material-ui/core"
-import Grid from '@mui/material/Grid';
+import { CircularProgress, TextField, Grid } from '@mui/material'
+import PageNumber from "../components/PageNumber"
 import Show from "../components/Show"
 import { ShowType } from "../types";
 
@@ -15,33 +15,56 @@ const fetchData = async (page: number) => {
 
 const Movies: NextPage<any> = () => {
   const [page, setPage] = React.useState(1);
+  const [title, setTitle] = React.useState("");
+  let movieDatas: any[] = [];
   const { data, isLoading, error } = useQuery(['shows', page], () => fetchData(page));
 
   if (error) {
     return <div>404</div>;
   }
 
-  if (isLoading) {
-    return <div>Loading...</div>;
+  if (!isLoading) {
+    movieDatas = [...data];
+    if (title.length > 3) {
+      movieDatas = data.filter((item: any) => item.title.includes(title));
+      console.log(movieDatas);
+    }
   }
 
   return (
     <>
       <Grid container spacing={2}>
+        <Grid item sm={12} lg={6}>
+          <TextField
+            placeholder="Search Movie"
+            fullWidth
+            defaultValue={title}
+            onChange={(e) => {
+              setTitle(e.target.value);
+            }}
+          />
+        </Grid>
+        <Grid item sm={12} lg={6}>
+          <TextField
+            fullWidth
+            select
+          />
+        </Grid>
+      </Grid>
+      <Grid container spacing={2}>
         {
-          data.map((item: ShowType) => (
-            <Show title={item.title} images={item.images} programType={item.programType} />
-          ))
+          isLoading === true 
+            ? <CircularProgress size={50} />
+            : (
+              movieDatas.map((item: ShowType) => (
+                <Show title={item.title} images={item.images} programType={item.programType} />
+              ))
+            )
         }
       </Grid>
       {
-        page > 1 
-          && <Button onClick={() => setPage(page - 1)}>Previous</Button>
-      }
-      <p>{page}</p>
-      {
-        data.length === 21 
-        && <Button onClick={() => setPage(page + 1)}>Next</Button>
+        !isLoading 
+          && <PageNumber data={movieDatas} page={page} setPage={setPage} />
       }
     </>
   );
