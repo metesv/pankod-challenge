@@ -1,10 +1,11 @@
 import React from "react";
 import Image from 'next/image'
 import { ShowType } from "../types";
+import styles from './Show.module.css'
 
 const Show = ({ title, description, programType, images, releaseYear }: ShowType) => {
   return (
-    <div>
+    <div className={styles.container}>
       <Image
         src={images["Poster Art"].url}
         alt={title}

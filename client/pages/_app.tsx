@@ -9,7 +9,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     // Provide the client to your App
     <QueryClientProvider client={queryClient}>
       <Component {...pageProps} />
-      <ReactQueryDevtools initialIsOpen={false} />
+      {/* <ReactQueryDevtools initialIsOpen={false} /> */}
     </QueryClientProvider>
   );
 }
