@@ -1,9 +1,10 @@
 import React from "react"
 import type { NextPage } from "next"
 import { useQuery } from "react-query"
-import { CircularProgress, TextField, Grid, MenuItem } from '@mui/material'
+import { CircularProgress, Grid } from '@mui/material'
 import PageNumber from "../components/PageNumber"
 import Show from "../components/Show"
+import Filters from "../components/Filters"
 import paginate from "../utils/paginate"
 import { ShowType } from "../types";
 
@@ -46,44 +47,21 @@ const Movies: NextPage<any> = () => {
 
   return (
     <>
-      <Grid container spacing={2}>
-        <Grid item sm={12} lg={6}>
-          <TextField
-            placeholder="Search Movie"
-            fullWidth
-            defaultValue={title}
-            onChange={(e) => {
-              setTitle(e.target.value);
-            }}
-          />
-        </Grid>
-        <Grid item sm={12} lg={6}>
-          <TextField
-            label="Sort By"
-            fullWidth
-            select
-            defaultValue={dropdownVal}
-            onChange={(e) => {
-              setDropdownVal(e.target.value);
-              setPage(1);
-            }}
-          >
-            <MenuItem value="titleAsc">
-              Title(A-Z)
-            </MenuItem>
-            <MenuItem value="titleDesc">
-              Title(Z-A)
-            </MenuItem>
-          </TextField>
-        </Grid>
-      </Grid>
-      <Grid container spacing={2}>
+      <Filters
+        title={title}
+        setTitle={setTitle}
+        dropdownVal={dropdownVal} 
+        setDropdownVal={setDropdownVal} 
+        showType="Movie" 
+        setPage={setPage} 
+      />
+      <Grid container spacing={2} sx={{ ml: 5 }}>
         {
           isLoading === true 
             ? <CircularProgress size={50} style={{ position: "absolute", top: "50%", left: "50%" }} />
             : (
-              dataPages[page-1]?.map((item: ShowType) => (
-                <Show title={item.title} images={item.images} programType={item.programType} />
+              dataPages[page-1]?.map((item: ShowType, index: number) => (
+                <Show key={index} title={item.title} images={item.images} programType={item.programType} />
               ))
             )
         }

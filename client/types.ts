@@ -20,3 +20,8 @@ export enum ProgramType {
     Movie = "movie",
     Series = "series",
 }
+
+export interface MovieArray {
+    child: string;
+    value: string;
+}
