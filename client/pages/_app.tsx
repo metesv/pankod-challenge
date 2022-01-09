@@ -3,6 +3,7 @@ import type { AppProps } from "next/app";
 import Head from "next/head";
 import { QueryClient, QueryClientProvider } from "react-query";
 import Navbar from "../components/Navbar";
+import '../styles/globals.css'
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [queryClient] = React.useState(() => new QueryClient());

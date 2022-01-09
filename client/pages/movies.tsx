@@ -1,7 +1,7 @@
 import React from "react"
 import type { NextPage } from "next"
 import { useQuery } from "react-query"
-import { CircularProgress, Grid } from '@mui/material'
+import { CircularProgress, Grid, Box } from '@mui/material'
 import PageNumber from "../components/PageNumber"
 import Show from "../components/Show"
 import Filters from "../components/Filters"
@@ -55,21 +55,25 @@ const Movies: NextPage<any> = () => {
         showType="Movie" 
         setPage={setPage} 
       />
-      <Grid container spacing={2} sx={{ ml: 5 }}>
+      <Box p={5} m={0}>
+        <Grid container spacing={2}>
+          {
+            isLoading === true 
+              ? <CircularProgress size={50} style={{ position: "absolute", top: "50%", left: "50%" }} />
+              : (
+                dataPages[page-1]?.map((item: ShowType, index: number) => (
+                  <Show key={index} title={item.title} images={item.images} programType={item.programType} />
+                ))
+              )
+          }
+        </Grid>
+      </Box>
+      <Box mr={5}>
         {
-          isLoading === true 
-            ? <CircularProgress size={50} style={{ position: "absolute", top: "50%", left: "50%" }} />
-            : (
-              dataPages[page-1]?.map((item: ShowType, index: number) => (
-                <Show key={index} title={item.title} images={item.images} programType={item.programType} />
-              ))
-            )
+          !isLoading 
+            && <PageNumber data={movieDatas} page={page} setPage={setPage} />
         }
-      </Grid>
-      {
-        !isLoading 
-          && <PageNumber data={movieDatas} page={page} setPage={setPage} />
-      }
+      </Box>
     </>
   );
 }

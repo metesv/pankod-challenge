@@ -9,7 +9,7 @@ import {
 
 function Navbar() {
   return (
-    <Box sx={{ flexGrow: 1, mb: 3 }}>
+    <Box mb={3} sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar variant="dense">
           <Link href="/">
