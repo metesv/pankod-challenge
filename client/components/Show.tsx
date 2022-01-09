@@ -10,7 +10,7 @@ import { ShowType } from "../types";
 const Show = ({ title, images }: ShowType) => {
   return (
     <Grid item xs={6} md={4} lg={2}>
-      <Card sx={{ maxWidth: 245 }}>
+      <Card sx={{ maxWidth: 245, border: "1px solid black" }}>
         <CardMedia>
           <Image
             src={images["Poster Art"].url}
