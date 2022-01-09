@@ -9,7 +9,7 @@ const PageNumber = ({ page, setPage, data }: any) => {
       }
       <p>{page}</p>
       {
-        data?.length === 21 
+        data.length / 21 > page
         && <Button onClick={() => setPage(page + 1)}>Next</Button>
       }
     </Grid>
