@@ -1,7 +1,7 @@
 export interface ShowType {
     title:       string;
     description?: string;
-    programType: ProgramType;
+    programType?: ProgramType;
     images:      Images;
     releaseYear?: number;
 }

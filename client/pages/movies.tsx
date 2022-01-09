@@ -62,7 +62,7 @@ const Movies: NextPage<any> = () => {
               ? <CircularProgress size={50} style={{ position: "absolute", top: "50%", left: "50%" }} />
               : (
                 dataPages[page-1]?.map((item: ShowType, index: number) => (
-                  <Show key={index} title={item.title} images={item.images} programType={item.programType} />
+                  <Show key={index} title={item.title} images={item.images} releaseYear={item.releaseYear} />
                 ))
               )
           }
