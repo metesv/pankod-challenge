@@ -7,6 +7,7 @@ import Show from "../components/Show"
 import PageNumber from "../components/PageNumber"
 import paginate from "../utils/paginate"
 import { ShowType } from "../types";
+import { seriesDropdownFilters } from "../utils/filterArrays"
 
 const ITEMS_PER_PAGE = 21;
 
@@ -41,6 +42,12 @@ const Series: NextPage<any> = () => {
     if (dropdownVal === "titleDesc") {
       showDatas.sort((a, b) => b.title.localeCompare(a.title));
     }
+    if (dropdownVal === "releaseYearAsc") {
+      showDatas.sort((a, b) => a.releaseYear - b.releaseYear);
+    }
+    if (dropdownVal === "releaseYearDesc") {
+      showDatas.sort((a, b) => b.releaseYear - a.releaseYear);
+    }
     // Paginate Data
     dataPages = paginate(showDatas, ITEMS_PER_PAGE);
   }
@@ -54,6 +61,7 @@ const Series: NextPage<any> = () => {
         setDropdownVal={setDropdownVal} 
         showType="Series" 
         setPage={setPage} 
+        dropdownFilters={seriesDropdownFilters}
       />
       <Box p={5} m={0}>
         <Grid container spacing={2}>

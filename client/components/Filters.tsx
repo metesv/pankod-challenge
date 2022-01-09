@@ -1,8 +1,7 @@
 import { TextField, Grid, MenuItem, Box } from '@mui/material';
-import { movieDropdownFilters } from '../utils/filterArrays';
 import { MovieArray } from "../types";
 
-const Filters = ({ title, setTitle, dropdownVal, setDropdownVal, showType, setPage }: any) => {
+const Filters = ({ title, setTitle, dropdownVal, setDropdownVal, showType, setPage, dropdownFilters }: any) => {
   return (
     <Box mb={1} px={5}>
       <Grid container spacing={2}>
@@ -28,7 +27,7 @@ const Filters = ({ title, setTitle, dropdownVal, setDropdownVal, showType, setPa
             }}
           >
             {
-              movieDropdownFilters.map((item: MovieArray) => (
+              dropdownFilters.map((item: MovieArray) => (
                 <MenuItem style={{ width: "100%" }} key={item.value} value={item.value}>
                   {
                     item.child

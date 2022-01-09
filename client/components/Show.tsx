@@ -24,7 +24,7 @@ const Show = ({ title, images, releaseYear }: ShowType) => {
         </Link>
         <CardContent>  
           <Typography gutterBottom variant="h5" component="div">
-            {`${title}(${releaseYear})`}
+            {`${title}(${releaseYear || "-"})`}
           </Typography>
         </CardContent>
       </Card>

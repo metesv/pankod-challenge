@@ -7,6 +7,7 @@ import Show from "../components/Show"
 import Filters from "../components/Filters"
 import paginate from "../utils/paginate"
 import { ShowType } from "../types";
+import { movieDropdownFilters } from '../utils/filterArrays';
 
 const ITEMS_PER_PAGE = 21;
 
@@ -41,6 +42,12 @@ const Movies: NextPage<any> = () => {
     if (dropdownVal === "titleDesc") {
       movieDatas.sort((a, b) => b.title.localeCompare(a.title));
     }
+    if (dropdownVal === "releaseYearAsc") {
+      movieDatas.sort((a, b) => a.releaseYear - b.releaseYear);
+    }
+    if (dropdownVal === "releaseYearDesc") {
+      movieDatas.sort((a, b) => b.releaseYear - a.releaseYear);
+    }
     // Paginate Data
     dataPages = paginate(movieDatas, ITEMS_PER_PAGE);
   }
@@ -54,6 +61,7 @@ const Movies: NextPage<any> = () => {
         setDropdownVal={setDropdownVal} 
         showType="Movie" 
         setPage={setPage} 
+        dropdownFilters={movieDropdownFilters}
       />
       <Box p={5} m={0}>
         <Grid container spacing={2}>
