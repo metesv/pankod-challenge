@@ -14,7 +14,7 @@ function Navbar() {
         <Toolbar variant="dense">
           <Link href="/">
             <Typography style={{ cursor: 'pointer' }} variant="h4" color="inherit" component="div">
-              Photos
+              DEMO Streaming
             </Typography>
           </Link>
         </Toolbar>

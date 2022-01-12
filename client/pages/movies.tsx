@@ -31,7 +31,7 @@ const Movies: NextPage<any> = () => {
   if (!isLoading) {
     // SearchBox filter
     if (title.length > 3) {
-      movieDatas = data.filter((item: any) => item.title.includes(title));
+      movieDatas = data.filter((item: any) => item.title.toLowerCase().includes(title.toLowerCase()));
     } else {
       movieDatas = [...data];
     }
