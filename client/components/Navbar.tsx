@@ -1,25 +1,14 @@
 import React from "react";
 import Link from "next/link";
-import {
-  AppBar,
-  Toolbar,
-  Box,
-  Typography,
-} from "@material-ui/core";
+import styles from "./Navbar.module.css";
 
 function Navbar() {
   return (
-    <Box mb={3} sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
-        <Toolbar variant="dense">
-          <Link href="/">
-            <Typography style={{ cursor: 'pointer' }} variant="h4" color="inherit" component="div">
-              DEMO Streaming
-            </Typography>
-          </Link>
-        </Toolbar>
-      </AppBar>
-    </Box>
+    <div className={styles.container}>
+      <Link href="/">
+        <h2 className={styles.title}>DemoStreaming</h2>
+      </Link>
+    </div>
   );
 }
 export default Navbar;

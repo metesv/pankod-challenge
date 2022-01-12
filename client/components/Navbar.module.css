@@ -1,0 +1,13 @@
+.container {
+    display: flex;
+    width: 100%;
+    background-color: #055C9D;
+    box-shadow: 0 8px 4px -2px black;
+    z-index: 10;
+}
+
+.title {
+    margin-left: 5%;
+    color: white;
+    cursor: pointer;
+}

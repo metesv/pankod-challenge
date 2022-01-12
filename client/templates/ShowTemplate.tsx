@@ -5,6 +5,7 @@ import { CircularProgress, Grid, Box } from '@mui/material'
 import PageNumber from "../components/PageNumber"
 import Show from "../components/Show"
 import Filters from "../components/Filters"
+import Header from "../components/Header"
 import paginate from "../utils/paginate"
 import { ShowType } from "../types";
 
@@ -53,6 +54,7 @@ const ShowTemplate: NextPage<any> = ({ programType, dropdownFilters, showType })
 
   return (
     <>
+      <Header title={showType} />
       <Filters
         title={title}
         setTitle={setTitle}

@@ -6,7 +6,7 @@ import { movieDropdownFilters } from '../utils/filterArrays';
 const Movies: NextPage<any> = () => {
   return (
     <>
-      <ShowTemplate programType="movie" dropdownFilters={movieDropdownFilters} showType="Movie" />
+      <ShowTemplate programType="movie" dropdownFilters={movieDropdownFilters} showType="Movies" />
     </>
   );
 }
